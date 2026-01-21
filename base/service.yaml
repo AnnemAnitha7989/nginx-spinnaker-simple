@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ${APP_NAME}
+  name: app
 spec:
-  type: LoadBalancer
   selector:
-    app: ${APP_NAME}
+    app: app
   ports:
     - port: 80
       targetPort: 80
+  type: LoadBalancer
