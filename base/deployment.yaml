@@ -1,28 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ${APP_NAME}
+  name: app
   labels:
-    app: ${APP_NAME}
+    app: app
 spec:
-  replicas: ${REPLICAS}
+  replicas: 1
   selector:
     matchLabels:
-      app: ${APP_NAME}
+      app: app
   template:
     metadata:
       labels:
-        app: ${APP_NAME}
+        app: app
     spec:
       containers:
-        - name: ${APP_NAME}
-          image: "${IMAGE}:${TAG}"
-          ports:
-            - containerPort: ${PORT}
-          resources:
-            requests:
-              cpu: ${CPU_REQUEST}
-              memory: ${MEMORY_REQUEST}
-            limits:
-              cpu: ${CPU_LIMIT}
-              memory: ${MEMORY_LIMIT}
+      - name: app
+        image: nginx
+        ports:
+        - containerPort: 80
